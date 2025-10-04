@@ -62,7 +62,7 @@ async function addUserMood(req, res){
 
     const userMoodData = req.body;
     const userIp2 = req.ip || req.connection.remoteAddress || req.socket.remoteAddress;
-    console.log("user ip -> ", userIp2, req.ip, req.connection.remoteAddress, req.socket.remoteAddress)
+    console.log("user ip -> ", userIp2, req.ip, req.connection.remoteAddress, req.socket.remoteAddress, req.headers['x-forwarded-for'])
     const user_mood_value = userMoodData.user_mood_value
     // console.log(userIp2)
     const geo = geoip.lookup(userIp2);
