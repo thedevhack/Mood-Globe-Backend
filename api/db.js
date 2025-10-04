@@ -49,9 +49,16 @@ async function getLatest10UserMoods(){
     return rowsData
 }
 
+async function removeAllGlobeDataCron(){
+    const query = `TRUNCATE TABLE userglobe2;;`;
+    // const moodValue = getMoodValue(mood);
+    const result =  await myDbPool.query(query);
+}
+
 module.exports = {
     getUserMoodAvg,
     insertUserMood,
-    getLatest10UserMoods
+    getLatest10UserMoods,
+    removeAllGlobeDataCron
 }
 
