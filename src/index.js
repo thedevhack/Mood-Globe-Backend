@@ -6,18 +6,18 @@ const PORT = 3158
 const app = express()
 
 // app.use(cors())
-const allowedOrigins = ["https://keen-pothos-8d9b4f.netlify.app"];
-
-app.use((req, res, next) => {
-    const origin = req.get("origin") || req.get("referer");
-
-    if (origin && allowedOrigins.some(url => origin.startsWith(url))) {
-        return next();
-    }
-
-    console.log("❌ Blocked request from:", origin || "unknown");
-    return res.status(403).json({ message: "Access forbidden" });
-});
+// const allowedOrigins = ["https://keen-pothos-8d9b4f.netlify.app"];
+//
+// app.use((req, res, next) => {
+//     const origin = req.get("origin") || req.get("referer");
+//
+//     if (origin && allowedOrigins.some(url => origin.startsWith(url))) {
+//         return next();
+//     }
+//
+//     console.log("❌ Blocked request from:", origin || "unknown");
+//     return res.status(403).json({ message: "Access forbidden" });
+// });
 
 app.use(bodyParser.json())
 
