@@ -5,7 +5,20 @@ const api_router = require("../api/routes")
 const PORT = 3158
 const app = express()
 
-app.use(cors())
+// app.use(cors())
+const allowedOrigin = "https://keen-pothos-8d9b4f.netlify.app/";
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || origin === allowedOrigin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(bodyParser.json())
 
 
