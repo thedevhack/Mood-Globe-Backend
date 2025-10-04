@@ -19,17 +19,6 @@ app.use((req, res, next) => {
     return res.status(403).json({ message: "Access forbidden" });
 });
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || origin === allowedOrigin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
 app.use(bodyParser.json())
 
 
