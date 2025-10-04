@@ -5,7 +5,7 @@ const dbManager = require("../api/db")
 var globe_data = {}
 
 async function loadGlobeData() {
-    globe_data = JSON.parse(await fs.readFileSync(__dirname + "\\files\\globe-data.json", "utf-8"))
+    globe_data = JSON.parse(await fs.readFileSync(__dirname + "/files/globe-data.json", "utf-8"))
 }
 
 loadGlobeData();
@@ -108,7 +108,7 @@ async function addUserMood(req, res){
 async function getGlobeData(req, res){
     //1.get globe data
 
-    globe_data = JSON.parse(await fs.readFileSync(__dirname + "\\files\\globe-data.json", "utf-8"))
+    globe_data = JSON.parse(await fs.readFileSync(__dirname + "/files/globe-data.json", "utf-8"))
 
     const countries = globe_data['features'];
 
