@@ -100,7 +100,7 @@ async function addUserMood(req, res){
     const countryCode = country.properties.ISO_A2
 
     try{
-        await dbManager.insertUserMood("27.7.13.52", user_mood_value, countryCode)
+        await dbManager.insertUserMood(userIp2, user_mood_value, countryCode)
     } catch (err){
         console.error(err)
     }
