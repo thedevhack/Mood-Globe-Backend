@@ -6,7 +6,7 @@ const PORT = 3158
 const app = express()
 
 // app.use(cors())
-const allowedOrigins = ["https://keen-pothos-8d9b4f.netlify.app/"];
+const allowedOrigins = ["https://keen-pothos-8d9b4f.netlify.app"];
 
 app.use((req, res, next) => {
     const origin = req.get("origin") || req.get("referer");
