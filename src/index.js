@@ -5,27 +5,7 @@ const api_router = require("../api/routes")
 const PORT = 3158
 const app = express()
 
-// app.use(cors())
-// const allowedOrigins = ["https://keen-pothos-8d9b4f.netlify.app"];
-//
-// app.use((req, res, next) => {
-//     const origin = req.get("origin") || req.get("referer");
-//
-//     if (origin && allowedOrigins.some(url => origin.startsWith(url))) {
-//         return next();
-//     }
-//
-//     console.log("❌ Blocked request from:", origin || "unknown");
-//     return res.status(403).json({ message: "Access forbidden" });
-// });
-
-app.use((req, res, next) => {
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    res.setHeader('Surrogate-Control', 'no-store');
-    next();
-});
+app.use(cors())
 
 app.use(bodyParser.json())
 
