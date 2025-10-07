@@ -1,14 +1,13 @@
-
 const { Pool } = require("pg");
 
 
 //db-config
 const myDbPool = new Pool({
-    user:"avnadmin",
-    host:"pg-2ccde416-papkap59-6f04.c.aivencloud.com",
-    database:"testing",
-    password:"AVNS_q7-V2yP3oeE6GDOl0Jw",
-    port:13818,
+    user:process.env.DB_USER,
+    host:process.env.DB_HOST,
+    database:process.env.DB_NAME,
+    password:process.env.DB_PASSWORD,
+    port:process.env.DB_PORT,
     max:20,
     min:5,
     idle:10000,
@@ -18,18 +17,17 @@ const myDbPool = new Pool({
     }
 })
 
-async function insertUserMood(user_ip_addr, user_mood_value, user_country){
+
+async function insertUserMood(user_ip_addr, user_mood_value, user_country, user_lat, user_lon){
     try {
-        const query = `insert into userglobe2 (user_ip, user_mood_value, user_country) values ($1, $2, $3) RETURNING *;`;
-
-
-        const result= await myDbPool.query(query, [user_ip_addr, user_mood_value, user_country]);
+        const query = `insert into userglobe2 (user_ip, user_mood_value, user_country, user_lat, user_lon) values ($1, $2, $3, $4, $5) RETURNING *;`;
+        const result= await myDbPool.query(query, [user_ip_addr, user_mood_value, user_country, user_lat, user_lon]);
         // console.log("inserted data id ->", result)
-
     }catch(error){
         console.error(error)
     }
 }
+
 
 async function getUserMoodAvg(){
     const query = `select user_country, avg(user_mood_value) from userglobe2 group by user_country;`;
@@ -40,8 +38,9 @@ async function getUserMoodAvg(){
     return rowsData
 }
 
+
 async function getLatest10UserMoods(){
-    const query = `select user_ip, user_mood_value from userglobe2 order by id desc limit 10;`;
+    const query = `select user_ip, user_mood_value, user_lat, user_lon from userglobe2 order by id desc limit 10;`;
 
     // const moodValue = getMoodValue(mood);
     const result = await myDbPool.query(query);
@@ -49,9 +48,9 @@ async function getLatest10UserMoods(){
     return rowsData
 }
 
+
 async function removeAllGlobeDataCron(){
     const query = `TRUNCATE TABLE userglobe2;;`;
-    // const moodValue = getMoodValue(mood);
     const result =  await myDbPool.query(query);
 }
 
