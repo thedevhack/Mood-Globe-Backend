@@ -8,7 +8,7 @@ const app = express()
 
 require('dotenv').config();
 
-// app.use(cors())
+app.use(cors())
 
 // const allowedOrigins = [process.env.MY_DOMAIN];
 
