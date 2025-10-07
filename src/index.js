@@ -29,10 +29,10 @@ app.get("/health-check", (req, res) => {
 //     return res.status(403).json({ message: "Access forbidden" });
 // });
 
-app.use((req, res, next) => {
-    console.log("origin of request", req.get("origin"), req.get("referer"))
-    next()
-})
+// app.use((req, res, next) => {
+//     console.log("origin of request", req.get("origin"), req.get("referer"))
+//     next()
+// })
 
 
 
