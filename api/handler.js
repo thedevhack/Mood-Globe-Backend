@@ -38,8 +38,9 @@ async function addUserMood(req){
         let userMoodData = utils.getReqBody(req);
         let user_mood_value = userMoodData.user_mood_value
         const user_ip = utils.getUserIp(req)
-        const userGeoData = external.getIpCountryCoords(user_ip);
+        const userGeoData = await external.getIpCountryCoords(user_ip);
         const {lat, lng, countryCode} = utils.getUserLatLonCountry(userGeoData, countriesData)
+        console.log(user_ip, user_mood_value, countryCode, lat, lng)
         await dbManager.insertUserMood(user_ip, user_mood_value, countryCode, lat, lng)
         return { data: {message: "success"}, status: 200}
     } catch(err) {
