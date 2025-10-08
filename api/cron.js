@@ -15,7 +15,7 @@ function removeAllUserMoodsCron(){
             console.log("Hello World — it's a new UTC day!");
             await dbManager.removeAllGlobeDataCron()
         }
-    }, 3300000)
+    }, 60000)
 }
 
 module.exports = {
