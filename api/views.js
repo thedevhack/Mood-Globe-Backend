@@ -8,13 +8,13 @@ async function addUserMood(req, res){
 
 
 async function getGlobeData(req, res){
-    const {data, status} = await handler.getLatestUserMoods()
+    const {data, status} = await handler.getGlobeData()
     return res.status(status).json(data)
 }
 
 
 async function getLatestUserMoods(req, res){
-    const {data, status} = await handler.getGlobeData()
+    const {data, status} = await handler.getLatestUserMoods()
     return res.status(status).json(data)
 }
 
