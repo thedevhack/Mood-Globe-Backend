@@ -3,22 +3,22 @@ function getReqBody(req){
 }
 
 
-function getValueColor(value){
-    switch (value) {
-        case (value >= -0.5 && value <= 0.5):
-            return "#ffffff"
-        case (value > -1.5 && value < 0.5):
-            return "#fff000"
-        case (value <= -1.5):
-            return "#ff0000"
-        case (value > 0.5 && value <= 1.5):
-            return "#00fff0"
-        case (value > 1.5):
-            return "#00ff00"
-        default:
-            return "#fff"
+function getValueColor(value) {
+    if (value >= -0.5 && value <= 0.5) {
+        return "#ffffff";
+    } else if (value > -1.5 && value < 0.5) {
+        return "#fff000";
+    } else if (value <= -1.5) {
+        return "#ff0000";
+    } else if (value > 0.5 && value <= 1.5) {
+        return "#00fff0";
+    } else if (value > 1.5) {
+        return "#00ff00";
+    } else {
+        return "#fff";
     }
 }
+
 
 
 function getMood(value){
