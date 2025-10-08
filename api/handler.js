@@ -25,6 +25,7 @@ async function getLatestUserMoods(){
 async function getGlobeData(){
     try {
         const getAverageMoods = await dbManager.getUserMoodAvg()
+        console.log("Average Moods ->", getAverageMoods)
         const constructMoodAbgResponse = utils.addCountryAvgMoodColour(countriesData, getAverageMoods)
         return { data: constructMoodAbgResponse, status: 200}
     } catch(err) {
