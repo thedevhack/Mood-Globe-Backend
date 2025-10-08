@@ -9,13 +9,12 @@ function removeAllUserMoodsCron(){
         const utcMinute = now.getUTCMinutes();
 
         console.log(`Current UTC time: ${utcHour}:${utcMinute}`);
-        await dbManager.removeAllGlobeDataCron()
         // Check if it's between 00:00 and 00:59 UTC (i.e., start of a new day)
         if (utcHour === 0 && utcMinute < 60) {
             console.log("Hello World — it's a new UTC day!");
             await dbManager.removeAllGlobeDataCron()
         }
-    }, 60000)
+    }, 3300000)
 }
 
 module.exports = {
