@@ -50,7 +50,7 @@ async function getLatest10UserMoods(){
 
 
 async function removeAllGlobeDataCron(){
-    const query = `TRUNCATE TABLE userglobe2;;`;
+    const query = `delete from userglobe2;`;
     const result =  await myDbPool.query(query);
 }
 
