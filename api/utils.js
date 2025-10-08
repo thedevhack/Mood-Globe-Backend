@@ -115,7 +115,8 @@ function getUserLatLonCountry(userGeoData, countryData){
     let lat = null;
     let lng = null;
     let countryCode = null;
-
+    let userCountry = null;
+    console.log(userGeoData)
     if (userGeoData){
         lat = userGeoData.lat
         lng = userGeoData.lon
@@ -138,7 +139,7 @@ function getUserLatLonCountry(userGeoData, countryData){
     }
 
     countryCode = userCountry.properties.ISO_A2
-
+    console.log(lat, lng, countryCode)
     return {
         lat,
         lng,
