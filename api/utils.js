@@ -94,7 +94,7 @@ function constructLatest10UserMoodData(getLatest10UserMoods){
 function addCountryAvgMoodColour(countriesData, getAverageMoodValues){
     let updatedCountriesData = structuredClone(countriesData)
     getAverageMoodValues.forEach(countryMoodAvg => {
-        countriesData.forEach(country => {
+        updatedCountriesData.forEach(country => {
             if (country.properties.ISO_A2 === countryMoodAvg.user_country){
                 country.colour = getValueColor(parseFloat(countryMoodAvg.avg))
             }
